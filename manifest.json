@@ -1,0 +1,21 @@
+{
+
+  "manifest_version": 2,
+  "name": "VersionTracker",
+  "version": "1.0",
+
+  "description": "An addon for taking notes",
+  "homepage_url": "https://github.com/djmgit/scribble_web_extension",
+  "icons": {
+    "32": "icons/vt_icon.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/vt_icon.png",
+    "default_title": "Scribble",
+    "default_popup": "popup/popup.html"
+  },
+
+  "permissions": ["storage", "contextMenus", "activeTab"]
+  
+}
