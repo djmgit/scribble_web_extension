@@ -6,7 +6,7 @@
   <body>
     <div class="main-app" ng-app="exApp" ng-controller="exCtrl">
       <div class="container">
-        <div class="panel-default">
+        <div class="panel-default auth">
           <div class="panel-heading">
             User authentication
           </div>
@@ -20,6 +20,19 @@
               <input type="password" class="form-control" id="pwd" ng-model="password">
             </div>
             <button type="submit" class="btn btn-default" ng-click="login()">Login</button>
+          </div>
+        </div>
+
+        <div class="notes">
+          <div class="user_notes">
+            <div ng-repeat="note in notes" ng-click="show(note.note_id)" class="note card 
+                            {{note.note_id}}-note" >
+              <div class="note_title">
+                {{ note.note_title}}
+              </div>
+              <div class="{{note.note_id}}-body note-body">
+              </div>
+            </div> 
           </div>
         </div>
 
