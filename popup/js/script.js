@@ -62,7 +62,9 @@ app.controller('exCtrl', function($scope, $http) {
             } else {
                 $scope.showWarning(response.data.status);
             }
-    	});
+    	}, function(response) {
+            $scope.showWarning("Scribble is sleeping, Please try after some time");
+        });
     }
 
     $scope.fetchNotes = function() {
@@ -80,7 +82,9 @@ app.controller('exCtrl', function($scope, $http) {
             } else {
                 $scope.showWarning(response.data.status);
             }
-    	});
+    	}, function(response) {
+            $scope.showWarning("Scribble is sleeping, Please try after some time")
+        });
     }
 
     $scope.show = function(note_id) {
@@ -105,7 +109,9 @@ app.controller('exCtrl', function($scope, $http) {
     				$("."+note_id+"-body").slideToggle();
     			});
     			$scope.fetched[note_id] = true;
-    		});
+    		}, function(response) {
+                $scope.showWarning("Scribble is sleeping, Please try after some time")
+            });
     	}
     }
 
@@ -148,6 +154,8 @@ app.controller('exCtrl', function($scope, $http) {
                 } else {
                     $scope.showWarning(response.data.status);
                 }
+            }, function(response) {
+                $scope.showWarning("Scribble is sleeping, Please try after some time")
             });
     }
 
