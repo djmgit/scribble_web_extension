@@ -6,6 +6,15 @@ app.controller('exCtrl', function($scope, $http) {
     $(".info").hide();
     $(".warning").hide();
 
+    $(".auth").hide();
+    $(".create-note").hide();
+    $(".notes").hide();
+    $(".create_note_body").hide();
+
+    $(".create_note_header").click(function() {
+        $(".create_note_body").slideToggle();
+    });
+
     $scope.showInfo = function(message) {
         $(".info").html(message);
         $(".info").show();
@@ -46,6 +55,10 @@ app.controller('exCtrl', function($scope, $http) {
                 localStorage.setItem("token", $scope.token)
                 $scope.fetchNotes();
                 $scope.showInfo("Successfully logged in!");
+                $(".auth").hide();
+                $(".create-note").show();
+                $(".notes").show();
+                $(".logout").show();
             } else {
                 $scope.showWarning(response.data.status);
             }
@@ -119,8 +132,6 @@ app.controller('exCtrl', function($scope, $http) {
             dataObj["category"] = category
         }
 
-        $scope.token = localStorage.getItem("token");
-
         var config = {headers:  {
                     "Authorization": "Bearer " + $scope.token
                 }
@@ -130,9 +141,32 @@ app.controller('exCtrl', function($scope, $http) {
             res.then(function(response) {
                 if (response.data.status == "ok"){
                     $scope.showInfo("Created new note");
+                    $scope.note_title = "";
+                    $scope.note_body = "";
+                    $scope.note_keywords = "";
+                    $scope.note_category = "";
                 } else {
                     $scope.showWarning(response.data.status);
                 }
             });
+    }
+
+    if ($scope.isLoggedIn()) {
+        $(".create-note").show();
+        $(".notes").show();
+        $(".logout").show();
+        $scope.fetchNotes();
+    } else {
+        $(".auth").show();
+        $(".logout").hide();
+    }
+
+    $scope.logOut = function() {
+        localStorage.removeItem("token");
+        $scope.token = "";
+        $(".auth").show();
+        $(".create-note").hide();
+        $(".notes").hide();
+        $(".logout").hide();
     }
 });
