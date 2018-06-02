@@ -23,3 +23,15 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     color: #424242;
 }
+
+.info {
+    background-color: #00C853;
+    color: white;
+    padding: 10px;
+}
+
+.warning {
+    background-color: #C62828;
+    columns: white;
+    padding: 10px;
+}

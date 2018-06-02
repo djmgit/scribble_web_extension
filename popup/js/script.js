@@ -2,6 +2,27 @@ var app = angular.module('exApp', []);
 app.controller('exCtrl', function($scope, $http) {
 
 	$scope.fetched = {};
+
+    $(".info").hide();
+    $(".warning").hide();
+
+    $scope.showInfo = function(message) {
+        $(".info").html(message);
+        $(".info").show();
+
+        setTimeout(function() {
+            $(".info").hide();
+        }, 3000);
+    }
+
+    $scope.showWarning = function(message) {
+        $(".warning").html(message);
+        $(".warning").show();
+        
+        setTimeout(function() {
+            $(".warning").hide();
+        }, 3000);
+    }
 	
     $scope.isLoggedIn = function() {
         if (localStorage.getItem("token") == null) {
@@ -20,9 +41,14 @@ app.controller('exCtrl', function($scope, $http) {
 
     	var res = $http.post("https://app.accidentally14.hasura-app.io/api/login", dataObj);
     	res.then(function(response) {
-    		$scope.token = response.data.data.auth_token;
-    		localStorage.setItem("token", $scope.token)
-    		$scope.fetchNotes();
+            if (response.data.status == "ok") {
+                $scope.token = response.data.data.auth_token;
+                localStorage.setItem("token", $scope.token)
+                $scope.fetchNotes();
+                $scope.showInfo("Successfully logged in!");
+            } else {
+                $scope.showWarning(response.data.status);
+            }
     	});
     }
 
@@ -36,8 +62,11 @@ app.controller('exCtrl', function($scope, $http) {
 
 		var res = $http.post("https://app.accidentally14.hasura-app.io/api/all_notes", {},  config);
     	res.then(function(response) {
-    		$scope.notes = response.data.data;
-    		console.log($scope.notes)
+            if (response.data.status == "ok") {
+    		  $scope.notes = response.data.data;
+            } else {
+                $scope.showWarning(response.data.status);
+            }
     	});
     }
 
@@ -99,7 +128,11 @@ app.controller('exCtrl', function($scope, $http) {
 
         var res = $http.post("https://app.accidentally14.hasura-app.io/api/add_note", dataObj,  config);
             res.then(function(response) {
-                console.log(response.data)
+                if (response.data.status == "ok"){
+                    $scope.showInfo("Created new note");
+                } else {
+                    $scope.showWarning(response.data.status);
+                }
             });
     }
 });
