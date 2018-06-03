@@ -63,7 +63,7 @@ app.controller('exCtrl', function($scope, $http) {
                 $scope.showWarning(response.data.status);
             }
     	}, function(response) {
-            $scope.showWarning("Scribble is sleeping, Please try after some time");
+            $scope.showWarning("Scribble is sleeping. Visit https://auth.accidentally14.hasura-app.io/ui to wake your cluster up");
         });
     }
 
@@ -83,7 +83,7 @@ app.controller('exCtrl', function($scope, $http) {
                 $scope.showWarning(response.data.status);
             }
     	}, function(response) {
-            $scope.showWarning("Scribble is sleeping, Please try after some time")
+            $scope.showWarning("Scribble is sleeping. Visit https://auth.accidentally14.hasura-app.io/ui to wake your cluster up")
         });
     }
 
@@ -110,7 +110,7 @@ app.controller('exCtrl', function($scope, $http) {
     			});
     			$scope.fetched[note_id] = true;
     		}, function(response) {
-                $scope.showWarning("Scribble is sleeping, Please try after some time")
+                $scope.showWarning("Scribble is sleeping. Visit https://auth.accidentally14.hasura-app.io/ui to wake your cluster up")
             });
     	}
     }
@@ -155,7 +155,7 @@ app.controller('exCtrl', function($scope, $http) {
                     $scope.showWarning(response.data.status);
                 }
             }, function(response) {
-                $scope.showWarning("Scribble is sleeping, Please try after some time")
+                $scope.showWarning("Scribble is sleeping. Visit https://auth.accidentally14.hasura-app.io/ui to wake your cluster up")
             });
     }
 
