@@ -1,5 +1,13 @@
 ## Scribble chrome extension
 
+<table>
+  <tr>
+    <td> <img src="/images/s1.png"> </td>
+    <td> <img src="/images/s2.png"> </td>
+    <td> <img src="/images/s3.png"> </td>
+  </tr>
+</table>
+
 ## Setting up the extension
 
 The extension has to be setup from source. Follow the below given instructions to install the extension on your browser.
