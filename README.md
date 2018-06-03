@@ -20,4 +20,5 @@ The extension has to be setup from source. Follow the below given instructions t
 
 The extension will be installed on your browser.
 
-
+As of now, the extension only provides login, logout, note creation and note viewing functionalities. It does not allow
+searching and deleting.
