@@ -1,5 +1,7 @@
 ## Scribble chrome extension
 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/bhBrYJ6VRPs/0.jpg)](http://www.youtube.com/watch?v=bhBrYJ6VRPs "Scribble chrome extension")
+
 <table>
   <tr>
     <td> <img src="/images/s1.png"> </td>
