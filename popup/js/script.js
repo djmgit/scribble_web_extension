@@ -151,6 +151,7 @@ app.controller('exCtrl', function($scope, $http) {
                     $scope.note_body = "";
                     $scope.note_keywords = "";
                     $scope.note_category = "";
+                    $scope.fetchNotes();
                 } else {
                     $scope.showWarning(response.data.status);
                 }
